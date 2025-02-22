@@ -1,4 +1,4 @@
--- Anti-Crash Script
+-- Anti-Crash Script with Auto Run
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local player = Players.LocalPlayer
@@ -27,8 +27,13 @@ local function safeExecute(func)
     end
 end
 
--- Set up a loop to regularly check for crashes
-while true do
-    safeExecute(checkForCrashes)
-    wait(5) -- Adjust the wait time as needed
+-- Function to start the anti-crash monitoring
+local function startAntiCrashMonitoring()
+    while true do
+        safeExecute(checkForCrashes)
+        wait(5) -- Adjust the wait time as needed
+    end
 end
+
+-- Automatically run the anti-crash monitoring function
+startAntiCrashMonitoring()
